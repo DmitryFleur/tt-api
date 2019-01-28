@@ -1,0 +1,5 @@
+flask==1.0.2
+flask_restful==0.3.7
+psycopg2==2.7.1
+flask_sqlalchemy==2.3.2
+sqlalchemy_serializer==1.1

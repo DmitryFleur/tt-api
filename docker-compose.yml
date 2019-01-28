@@ -1,9 +1,18 @@
 version: '2'
 
 services:
-
+  app:
+      build: ./flask_app
+      links:
+        - db
+      ports:
+        - "5000:5000"
+      networks:
+        - tt
+      volumes:
+        - './flask_app:/flask_app/'
   db:
-    #restart: always
+    restart: always
     image: postgres:10.5
     container_name: tt-db
     environment:
@@ -16,7 +25,7 @@ services:
       - ./docker/db/dbini:/docker-entrypoint-initdb.d
       - ./docker/db/data:/var/lib/postgresql/data
     ports:
-      - "5438:5432" # Only for tests
+      - "5432:5432"
     networks:
       - tt
 
